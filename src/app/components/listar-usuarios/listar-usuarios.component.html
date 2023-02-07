@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">CRUD</span>
+                    <button class="btn btn-success float-end" routerLink="/crear-usuario">Nuevo Usuario</button>
+                    <table *ngIf="listUsuarios.length > 0" class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Semestre</th>
+                            <th scope="col">Cedula</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let usuario of listUsuarios">
+                            <th>{{ usuario.nombre }}</th>
+                            <td>{{ usuario.apellido }}</td>
+                            <td>{{ usuario.semestre }}</td>
+                            <td>{{ usuario.cedula }}</td>
+                            <td>
+                              <i [routerLink]="['/editar-usuario', usuario._id]" class="fas fa-edit text-primary"></i>
+                              <i (click)="eliminarUsuario(usuario._id)" class="fas fa-trash text-danger"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listUsuarios.length == 0">No hay Usuario para Mostrar</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

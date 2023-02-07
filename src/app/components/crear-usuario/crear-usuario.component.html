@@ -1,0 +1,65 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">{{ titulo | uppercase }}</span>
+                    <form class="mt-3" [formGroup]="usuarioForm" (ngSubmit)="agregarUsuario()"> 
+                        <div class="mb-3">
+                            <input type="text" formControlName="nombre"
+                            class="form-control form-control-lg" placeholder="Nombre" required pattern="[a-zA-Z]+">
+                            <div class="text-danger"
+                                *ngIf="usuarioForm.get('nombre')?.hasError('required') && usuarioForm.get('nombre')?.touched">
+                                <span>El nombre es <strong>obligatorio</strong></span>
+                            </div>
+                            <div class="text-danger"
+                                *ngIf="usuarioForm.get('nombre')?.hasError('pattern') && usuarioForm.get('nombre')">
+                                <span>Solo se permiten <strong>letras</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" formControlName="apellido"
+                            class="form-control form-control-lg" placeholder="Apellido" required pattern="[a-zA-Z]+">
+                            <div class="text-danger"
+                                *ngIf="usuarioForm.get('apellido')?.hasError('required') && usuarioForm.get('apellido')?.touched">
+                                <span>El apellido es <strong>obligatorio</strong></span>
+                            </div>
+                            <div class="text-danger"
+                                *ngIf="usuarioForm.get('apellido')?.hasError('pattern') && usuarioForm.get('apellido')">
+                                <span>Solo se permiten <strong>letras</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" formControlName="semestre"
+                            class="form-control form-control-lg" placeholder="Semestre" required pattern="[a-zA-Z]+">
+                            <div class="text-danger"
+                                *ngIf="usuarioForm.get('semestre')?.hasError('required') && usuarioForm.get('semestre')?.touched">
+                                <span>El semestre es <strong>obligatorio</strong></span>
+                            </div>
+                            <div class="text-danger"
+                                *ngIf="usuarioForm.get('semestre')?.hasError('pattern') && usuarioForm.get('semestre')">
+                                <span>Solo se permiten <strong>letras</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <input type="text" formControlName="cedula"
+                            class="form-control form-control-lg" placeholder="Cedula" required minlength="10" maxlength="10">
+                            <div class="text-danger"
+                                *ngIf="usuarioForm.get('cedula')?.hasError('required') && usuarioForm.get('cedula')?.touched">
+                                <span>La cedula es <strong>obligatoria</strong></span>
+                            </div>
+                            <div class="text-danger"
+                                *ngIf="usuarioForm.get('cedula')?.hasError('minlength') && usuarioForm.get('cedula')">
+                                <span>La cedula son <strong>10 números</strong></span>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <button routerLink="/" class="btn btn-secondary btn-lg float-start">Volver</button>
+                            <button type="submit" [disabled]="usuarioForm.invalid" class="btn btn-success btn-lg float-end">Aceptar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
